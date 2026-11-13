@@ -1,0 +1,19 @@
+# segredos
+.env
+.env.*
+*.pem
+
+# sistema e editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# arquivos
+guia.txt
+livro-caixa.zip
+README-is.md
+
+# dependências, caso um dia use npm
+node_modules/
+livro-caixa/

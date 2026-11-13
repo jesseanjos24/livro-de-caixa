@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topo">
+      <h1>Dashboard</h1>
+      <button class="link" id="btn-sair" type="button">Sair</button>
+    </header>
+
+    <div class="seletor-mes" id="seletor-mes">
+      <button class="btn btn-icone" id="mes-ant" type="button" aria-label="Mês anterior">‹</button>
+      <input type="month" id="mes" aria-label="Mês">
+      <button class="btn btn-icone" id="mes-prox" type="button" aria-label="Próximo mês">›</button>
+    </div>
+
+    <main>
+      <section class="vista" id="vista-painel">
+        <div class="resumo">
+          <p class="rotulo">Lucro do mês</p>
+          <p class="lucro" id="lucro">R$ 0,00</p>
+          <div class="barra" aria-hidden="true"><span id="barra-entrada"></span><span id="barra-saida"></span></div>
+          <dl class="totais">
+            <div><dt>Entradas</dt><dd id="total-entradas" class="entrada">R$ 0,00</dd></div>
+            <div><dt>Saídas</dt><dd id="total-saidas" class="saida">R$ 0,00</dd></div>
+          </dl>
+        </div>
+
+        <h2>Despesas por categoria</h2>
+        <ul class="lista" id="por-categoria"></ul>
+
+        <h2>Últimos lançamentos</h2>
+        <ul class="lista" id="recentes"></ul>
+      </section>
+
+      <section class="vista" id="vista-lancamentos" hidden>
+        <div class="filtros">
+          <select id="filtro-tipo" aria-label="Filtrar por tipo">
+            <option value="">Entradas e saídas</option>
+            <option value="entrada">Só entradas</option>
+            <option value="saida">Só saídas</option>
+          </select>
+          <select id="filtro-categoria" aria-label="Filtrar por categoria"></select>
+          <button class="btn" id="btn-csv" type="button">Baixar CSV</button>
+        </div>
+        <p class="contagem" id="contagem" role="status"></p>
+        <ul class="lista" id="lista-lanc"></ul>
+      </section>
+
+      <section class="vista" id="vista-categorias" hidden>
+        <form class="form-cat" id="form-cat">
+          <input type="text" id="cat-nome" maxlength="60" placeholder="Nome da categoria" aria-label="Nome da categoria" required>
+          <select id="cat-tipo" aria-label="Tipo da categoria">
+            <option value="entrada">Entrada</option>
+            <option value="saida">Saída</option>
+          </select>
+          <button class="btn btn-principal" type="submit">Adicionar categoria</button>
+        </form>
+        <h2>Categorias de entrada</h2>
+        <ul class="lista" id="cats-entrada"></ul>
+        <h2>Categorias de saída</h2>
+        <ul class="lista" id="cats-saida"></ul>
+      </section>
+    </main>
+  </div>
+
+  <button class="btn btn-principal fab" id="btn-novo" type="button">+ Novo lançamento</button>
+
+  <nav class="abas" aria-label="Seções">
+    <button class="aba" type="button" data-vista="painel" aria-current="page">Painel</button>
+    <button class="aba" type="button" data-vista="lancamentos">Lançamentos</button>
+    <button class="aba" type="button" data-vista="categorias">Categorias</button>
+  </nav>
+
+  <p class="aviso" id="aviso" role="status" hidden></p>
+
+  <dialog id="dlg" aria-labelledby="dlg-titulo">
+    <form id="form-lanc">
+      <h2 id="dlg-titulo">Novo lançamento</h2>
+      <input type="hidden" id="f-id">
+      <fieldset class="segmento">
+        <legend class="sr">Tipo</legend>
+        <label><input type="radio" name="tipo" value="entrada" checked><span>Entrada</span></label>
+        <label><input type="radio" name="tipo" value="saida"><span>Saída</span></label>
+      </fieldset>
+      <label>Valor (R$)
+        <input id="f-valor" type="number" inputmode="decimal" step="0.01" min="0.01" required>
+      </label>
+      <label>Categoria
+        <select id="f-categoria"></select>
+      </label>
+      <label>Descrição
+        <input id="f-descricao" type="text" maxlength="120" placeholder="Ex.: venda no balcão">
+      </label>
+      <label>Data
+        <input id="f-data" type="date" required>
+      </label>
+      <label>Forma de pagamento
+        <select id="f-pagamento"></select>
+      </label>
+      <p class="erro" id="f-erro" role="alert" hidden></p>
+      <div class="acoes">
+        <button class="btn" type="button" id="f-cancelar">Cancelar</button>
+        <button class="btn btn-principal" type="submit" id="f-salvar">Salvar lançamento</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
