@@ -79,10 +79,11 @@ Abra http://localhost:8000. No VS Code, também serve o Live Server apontando pa
 
 ### 4. Publicar
 
-Conecte o repositório do GitHub ao **Cloudflare Pages** (*Connect to Git*) ou ao **Netlify** (*Import an existing project*):
+No Cloudflare (Workers & Pages), conecte o repositório do GitHub e configure:
 
-- Comando de build: vazio
-- Diretório de saída / publicação: `public`
+- Build command: vazio
+- Deploy command: `npx wrangler deploy`
+- O arquivo `wrangler.jsonc` na raiz aponta para a pasta `public`
 
 Depois de publicar, em **Authentication → URL Configuration** (Supabase), defina o **Site URL** com o endereço do site.
 
