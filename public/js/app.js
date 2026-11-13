@@ -1,6 +1,7 @@
 import { exigirSessao, sair } from './auth.js';
 import * as db from './dados.js';
 import { fmtMoeda, dataISO, mesAtual, limitesDoMes, somarMes, fmtData, el } from './util.js';
+import './pwa.js';
 
 const $ = (id) => document.getElementById(id);
 const FORMAS = ['Dinheiro', 'Pix', 'Cartão de débito', 'Cartão de crédito', 'Boleto', 'Outro'];

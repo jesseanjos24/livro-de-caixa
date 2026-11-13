@@ -1,4 +1,5 @@
 import { entrar, redirecionarSeLogado } from './auth.js';
+import './pwa.js';
 
 redirecionarSeLogado();
 
